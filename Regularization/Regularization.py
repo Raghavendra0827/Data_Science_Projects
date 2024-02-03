@@ -43,8 +43,9 @@ def ridge(X, y, alpha):
     ax.legend()
     st.pyplot(fig)
 
-X = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]).reshape(-1, 1)  # Feature
-y = np.array([2, 4, 5, 4, 5, 8, 9, 12, 15, 16])
+np.random.seed(42)  # Set seed for reproducibility
+X = np.linspace(1, 10, 200).reshape(-1, 1)  # Generate 200 evenly spaced values between 1 and 10
+y = 2 * X.squeeze() + np.random.normal(0, 2, 200)
 
 st.sidebar.header('Regression Type')
 regression_type = st.sidebar.selectbox('Select Regression Type', ('Linear Regression', 'Lasso Regression', 'Ridge Regression'))

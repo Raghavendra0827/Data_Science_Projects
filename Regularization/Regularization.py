@@ -56,5 +56,5 @@ elif regression_type == 'Lasso Regression':
     alpha = st.sidebar.slider('Select Alpha', min_value=0.1, max_value=10.0, step=0.1)
     lasso(X, y, alpha)
 else: # Ridge Regression
-    alpha = st.sidebar.slider('Select Alpha', min_value=0.1, max_value=25.0, step=0.5)
+    alpha = st.sidebar.slider('Select Alpha', min_value=10.0, max_value=60.0, step=0.5)
     ridge(X, y, alpha)

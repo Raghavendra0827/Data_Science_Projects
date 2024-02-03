@@ -2,7 +2,6 @@ import streamlit as st
 import numpy as np
 from sklearn.linear_model import LinearRegression, Lasso, Ridge
 import matplotlib.pyplot as plt
-from matplotlib.colors import ListedColormap
 
 def Linearregression(X, y):
     model = LinearRegression()
@@ -21,6 +20,8 @@ def lasso(X, y, alpha):
     lasso_model = Lasso(alpha=alpha)  
     lasso_model.fit(X, y)
     y_pred_lasso = lasso_model.predict(X)
+    coef = lasso_model.coef_[0]
+    intercept = lasso_model.intercept_
     formula = f'y = {coef:.2f}X + {intercept:.2f}'
     explanation = f"In Lasso regression, the penalty term (alpha) is added to the absolute values of the coefficients (L1 regularization), which can result in sparse models with some coefficients being exactly zero."
     fig, ax = plt.subplots()
@@ -31,7 +32,6 @@ def lasso(X, y, alpha):
     st.title(f'Lasso Regression')
     st.write(f"**Formula:** {formula}")
     st.write(f"**Explanation:** {explanation}")
-    # ax.set_title('Lasso Regression')
     ax.legend()
     st.pyplot(fig)
 
@@ -39,6 +39,8 @@ def ridge(X, y, alpha):
     ridge_model = Ridge(alpha=alpha)  
     ridge_model.fit(X, y)
     y_pred_ridge = ridge_model.predict(X)
+    coef = ridge_model.coef_[0]
+    intercept = ridge_model.intercept_
     formula = f'y = {coef:.2f}X + {intercept:.2f}'
     explanation = f"In Ridge regression, the penalty term (alpha) is added to the square of the coefficients (L2 regularization), which helps in reducing the complexity of the model."
     fig, ax = plt.subplots()
@@ -49,7 +51,6 @@ def ridge(X, y, alpha):
     st.title(f'Ridge Regression')
     st.write(f"**Formula:** {formula}")
     st.write(f"**Explanation:** {explanation}")
-    # ax.set_title('Ridge Regression')
     ax.legend()
     st.pyplot(fig)
 

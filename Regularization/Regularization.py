@@ -24,7 +24,7 @@ def Linearregression(X, y):
     fig_3d.add_trace(go.Scatter3d(x=X.squeeze(), y=y, z=y_pred, mode='markers', name='Predicted Points'))
     fig_3d.add_trace(go.Scatter3d(x=X.squeeze(), y=y_pred, z=y_pred, mode='lines', name='Predicted Line'))
     fig_3d.update_layout(scene=dict(xaxis_title='X', yaxis_title='y', zaxis_title='Predicted y'))
-    st.write("## 3D Scatter Plot")
+    st.write("## 3D Visualization - Linear Regression")
     st.plotly_chart(fig_3d)
 
 def lasso(X, y, alpha):
@@ -53,7 +53,7 @@ def lasso(X, y, alpha):
     fig_3d.add_trace(go.Scatter3d(x=X.squeeze(), y=y, z=y_pred_lasso, mode='markers', name='Predicted Points'))
     fig_3d.add_trace(go.Scatter3d(x=X.squeeze(), y=y_pred_lasso, z=y_pred_lasso, mode='lines', name='Predicted Line'))
     fig_3d.update_layout(scene=dict(xaxis_title='X', yaxis_title='y', zaxis_title='Predicted y'))
-    st.write("## 3D Scatter Plot")
+    st.write("## 3D Visualization - Lasso Regression")
     st.plotly_chart(fig_3d)
 
 def ridge(X, y, alpha):
@@ -83,7 +83,7 @@ def ridge(X, y, alpha):
     fig_3d.add_trace(go.Scatter3d(x=X.squeeze(), y=y, z=y_pred_ridge, mode='markers', name='Predicted Points'))
     fig_3d.add_trace(go.Scatter3d(x=X.squeeze(), y=y_pred_ridge, z=y_pred_ridge, mode='lines', name='Predicted Line'))
     fig_3d.update_layout(scene=dict(xaxis_title='X', yaxis_title='y', zaxis_title='Predicted y'))
-    st.write("## 3D Scatter Plot")
+    st.write("## 3D Visualization - Ridge Regression")
     st.plotly_chart(fig_3d)
 
 np.random.seed(42)  # Set seed for reproducibility

@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 from sklearn.linear_model import LinearRegression, Lasso, Ridge
 import matplotlib.pyplot as plt
+import plotly.graph_objs as go
 
 def Linearregression(X, y):
     model = LinearRegression()
@@ -15,6 +16,12 @@ def Linearregression(X, y):
     ax.set_title('Linear Regression')
     ax.legend()
     st.pyplot(fig)
+
+    # 3D Scatter Plot
+    fig_3d = go.Figure(data=[go.Scatter3d(x=X.squeeze(), y=y, z=y_pred, mode='markers')])
+    fig_3d.update_layout(scene=dict(xaxis_title='X', yaxis_title='y', zaxis_title='Predicted y'))
+    st.write("## 3D Scatter Plot")
+    st.plotly_chart(fig_3d)
 
 def lasso(X, y, alpha):
     lasso_model = Lasso(alpha=alpha)  
@@ -35,6 +42,12 @@ def lasso(X, y, alpha):
     ax.legend()
     st.pyplot(fig)
 
+    # 3D Scatter Plot
+    fig_3d = go.Figure(data=[go.Scatter3d(x=X.squeeze(), y=y, z=y_pred_lasso, mode='markers')])
+    fig_3d.update_layout(scene=dict(xaxis_title='X', yaxis_title='y', zaxis_title='Predicted y'))
+    st.write("## 3D Scatter Plot")
+    st.plotly_chart(fig_3d)
+
 def ridge(X, y, alpha):
     ridge_model = Ridge(alpha=alpha)  
     ridge_model.fit(X, y)
@@ -54,6 +67,12 @@ def ridge(X, y, alpha):
     st.write(f"**Explanation:** {explanation}")
     ax.legend()
     st.pyplot(fig)
+
+    # 3D Scatter Plot
+    fig_3d = go.Figure(data=[go.Scatter3d(x=X.squeeze(), y=y, z=y_pred_ridge, mode='markers')])
+    fig_3d.update_layout(scene=dict(xaxis_title='X', yaxis_title='y', zaxis_title='Predicted y'))
+    st.write("## 3D Scatter Plot")
+    st.plotly_chart(fig_3d)
 
 np.random.seed(42)  # Set seed for reproducibility
 X = np.linspace(1, 10, 200).reshape(-1, 1)  # Generate 200 evenly spaced values between 1 and 10

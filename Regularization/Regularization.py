@@ -43,9 +43,10 @@ def ridge(X, y, alpha):
     intercept = ridge_model.intercept_
     formula = f'y = {coef:.2f}X + {intercept:.2f}'
     explanation = f"In Ridge regression, the penalty term (alpha) is added to the square of the coefficients (L2 regularization), which helps in reducing the complexity of the model."
+    color = 'green' if alpha < 1 else 'blue'  # Change color based on alpha value
     fig, ax = plt.subplots()
     ax.scatter(X, y, color='black', label='Data Points')
-    ax.plot(X, y_pred_ridge, color='blue', linewidth=2, label='Ridge Regression')
+    ax.plot(X, y_pred_ridge, color=color, linewidth=2, label='Ridge Regression')
     ax.set_xlabel('X')
     ax.set_ylabel('y')
     st.title(f'Ridge Regression')

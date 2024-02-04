@@ -21,7 +21,7 @@ def Linearregression(X, y):
 
     # 3D Scatter Plot
     fig_3d = go.Figure()
-    fig_3d.add_trace(go.Scatter3d(x=X.squeeze(), y=y, z=y_pred, mode='markers', name='Predicted Points'))
+    fig_3d.add_trace(go.Scatter3d(x=X.squeeze(), y=y, z=y_pred, mode='markers', name='Actual Data Points'))
     fig_3d.add_trace(go.Scatter3d(x=X.squeeze(), y=y_pred, z=y_pred, mode='lines', name='Predicted Line'))
     fig_3d.update_layout(scene=dict(xaxis_title='X', yaxis_title='y', zaxis_title='Predicted y'))
     st.write("## 3D Visualization - Linear Regression")
@@ -50,7 +50,7 @@ def lasso(X, y, alpha):
 
     # 3D Scatter Plot
     fig_3d = go.Figure()
-    fig_3d.add_trace(go.Scatter3d(x=X.squeeze(), y=y, z=y_pred_lasso, mode='markers', name='Predicted Points'))
+    fig_3d.add_trace(go.Scatter3d(x=X.squeeze(), y=y, z=y_pred_lasso, mode='markers', name='Actual Data Points'))
     fig_3d.add_trace(go.Scatter3d(x=X.squeeze(), y=y_pred_lasso, z=y_pred_lasso, mode='lines', name='Predicted Line'))
     fig_3d.update_layout(scene=dict(xaxis_title='X', yaxis_title='y', zaxis_title='Predicted y'))
     st.write("## 3D Visualization - Lasso Regression")
@@ -80,7 +80,7 @@ def ridge(X, y, alpha):
 
     # 3D Scatter Plot
     fig_3d = go.Figure()
-    fig_3d.add_trace(go.Scatter3d(x=X.squeeze(), y=y, z=y_pred_ridge, mode='markers', name='Predicted Points'))
+    fig_3d.add_trace(go.Scatter3d(x=X.squeeze(), y=y, z=y_pred_ridge, mode='markers', name='Actual Data Points'))
     fig_3d.add_trace(go.Scatter3d(x=X.squeeze(), y=y_pred_ridge, z=y_pred_ridge, mode='lines', name='Predicted Line'))
     fig_3d.update_layout(scene=dict(xaxis_title='X', yaxis_title='y', zaxis_title='Predicted y'))
     st.write("## 3D Visualization - Ridge Regression")

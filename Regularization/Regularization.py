@@ -8,6 +8,8 @@ def Linearregression(X, y):
     model = LinearRegression()
     model.fit(X, y)
     y_pred = model.predict(X)
+    
+    # Plot 2D Linear Regression
     fig, ax = plt.subplots()
     ax.scatter(X, y, color='black', label='Data Points')
     ax.plot(X, y_pred, color='blue', linewidth=3, label='Linear Regression')
@@ -18,7 +20,9 @@ def Linearregression(X, y):
     st.pyplot(fig)
 
     # 3D Scatter Plot
-    fig_3d = go.Figure(data=[go.Scatter3d(x=X.squeeze(), y=y, z=y_pred, mode='markers')])
+    fig_3d = go.Figure()
+    fig_3d.add_trace(go.Scatter3d(x=X.squeeze(), y=y, z=y_pred, mode='markers', name='Predicted Points'))
+    fig_3d.add_trace(go.Scatter3d(x=X.squeeze(), y=y_pred, z=y_pred, mode='lines', name='Predicted Line'))
     fig_3d.update_layout(scene=dict(xaxis_title='X', yaxis_title='y', zaxis_title='Predicted y'))
     st.write("## 3D Scatter Plot")
     st.plotly_chart(fig_3d)
@@ -31,6 +35,8 @@ def lasso(X, y, alpha):
     intercept = lasso_model.intercept_
     formula = f'y = {coef:.2f}X + {intercept:.2f}'
     explanation = f"In Lasso regression, the penalty term (alpha) is added to the absolute values of the coefficients (L1 regularization), which can result in sparse models with some coefficients being exactly zero."
+    
+    # Plot 2D Lasso Regression
     fig, ax = plt.subplots()
     ax.scatter(X, y, color='black', label='Data Points')
     ax.plot(X, y_pred_lasso, color='red', linewidth=2, label='Lasso Regression')
@@ -43,7 +49,9 @@ def lasso(X, y, alpha):
     st.pyplot(fig)
 
     # 3D Scatter Plot
-    fig_3d = go.Figure(data=[go.Scatter3d(x=X.squeeze(), y=y, z=y_pred_lasso, mode='markers')])
+    fig_3d = go.Figure()
+    fig_3d.add_trace(go.Scatter3d(x=X.squeeze(), y=y, z=y_pred_lasso, mode='markers', name='Predicted Points'))
+    fig_3d.add_trace(go.Scatter3d(x=X.squeeze(), y=y_pred_lasso, z=y_pred_lasso, mode='lines', name='Predicted Line'))
     fig_3d.update_layout(scene=dict(xaxis_title='X', yaxis_title='y', zaxis_title='Predicted y'))
     st.write("## 3D Scatter Plot")
     st.plotly_chart(fig_3d)
@@ -57,6 +65,8 @@ def ridge(X, y, alpha):
     formula = f'y = {coef:.2f}X + {intercept:.2f}'
     explanation = f"In Ridge regression, the penalty term (alpha) is added to the square of the coefficients (L2 regularization), which helps in reducing the complexity of the model."
     color = 'green' if alpha < 1 else 'blue'  # Change color based on alpha value
+    
+    # Plot 2D Ridge Regression
     fig, ax = plt.subplots()
     ax.scatter(X, y, color='black', label='Data Points')
     ax.plot(X, y_pred_ridge, color=color, linewidth=2, label='Ridge Regression')
@@ -69,7 +79,9 @@ def ridge(X, y, alpha):
     st.pyplot(fig)
 
     # 3D Scatter Plot
-    fig_3d = go.Figure(data=[go.Scatter3d(x=X.squeeze(), y=y, z=y_pred_ridge, mode='markers')])
+    fig_3d = go.Figure()
+    fig_3d.add_trace(go.Scatter3d(x=X.squeeze(), y=y, z=y_pred_ridge, mode='markers', name='Predicted Points'))
+    fig_3d.add_trace(go.Scatter3d(x=X.squeeze(), y=y_pred_ridge, z=y_pred_ridge, mode='lines', name='Predicted Line'))
     fig_3d.update_layout(scene=dict(xaxis_title='X', yaxis_title='y', zaxis_title='Predicted y'))
     st.write("## 3D Scatter Plot")
     st.plotly_chart(fig_3d)
